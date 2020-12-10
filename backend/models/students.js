@@ -24,12 +24,12 @@ const studentSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    setAmount: {
-      type: Number,
-      required: true,
-    },
     email: {
       type: String,
+      required: true,
+    },
+    setAmount: {
+      type: Number,
       required: true,
     },
     image: {
@@ -54,7 +54,7 @@ const studentSchema = mongoose.Schema(
       type: String,
     },
     phone: {
-      type: Number,
+      type: string,
       required: true,
     },
     classDay: {
@@ -80,6 +80,12 @@ const studentSchema = mongoose.Schema(
         type: Number,
         required: true,
       },
+    },
+
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true,
     },
     invoices: [invoiceSchema],
   },
