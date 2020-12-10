@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 const invoiceSchema = mongoose.Schema(
   {
     amount: { type: Number, required: true },
-    currentDate: { type: String, required: true },
-    dueDate: { type: String, required: true },
+    currentDate: { type: Date },
+    dueDate: { type: Date },
   },
   {
     timestamps: true,
@@ -39,7 +39,7 @@ const studentSchema = mongoose.Schema(
       type: String,
     },
     dob: {
-      type: String,
+      type: Date,
       required: true,
     },
     gender: {
