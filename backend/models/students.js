@@ -24,6 +24,10 @@ const studentSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    setAmount: {
+      type: Number,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
