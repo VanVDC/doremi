@@ -4,9 +4,7 @@ const invoiceSchema = mongoose.Schema(
   {
     invoiceItem: [
       {
-        date: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
+        date: { type: Date },
         price: { type: Number, required: true },
         student: {
           type: mongoose.Schema.Types.ObjectId,
@@ -17,13 +15,6 @@ const invoiceSchema = mongoose.Schema(
     ],
     paymentMethod: {
       type: String,
-      required: true,
-    },
-    paymentResult: {
-      id: { type: String },
-      status: { type: String },
-      update_time: { type: String },
-      email_address: { type: String },
     },
     totalPrice: {
       type: Number,
