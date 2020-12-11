@@ -59,7 +59,7 @@ const studentSchema = mongoose.Schema(
       type: String,
     },
     phone: {
-      type: string,
+      type: String,
       required: true,
     },
     classDay: {
