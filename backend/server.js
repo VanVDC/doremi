@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import studentRoutes from './routes/studentRoutes.js'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 dotenv.config()
 
@@ -12,6 +13,10 @@ const app = express()
 app.use(express.json())
 
 app.use('/api/students', studentRoutes)
+
+//check error
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
