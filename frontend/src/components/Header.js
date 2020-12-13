@@ -1,15 +1,23 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+import logo from '../assets/img/logo.svg'
 
 const Header = () => {
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='dark-50' variant='dark-50' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <i className='fas fa-music'></i> Doremi
+              <img
+                alt='logo'
+                src={logo}
+                width='100px'
+                height='60px'
+                className='d-inline-block align-top'
+              />{' '}
+              {/* <i className='fas fa-music'></i> Doremi */}
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />

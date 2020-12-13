@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import bgImage from '../assets/img/home_bg.jpg'
 
 const Main = () => {
@@ -14,12 +14,10 @@ const Main = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
             laborum minus molestiae.
           </h2>
-          {/* <Link target='about' classes='btn btn-primary rounded-0 mr-2'>
-            Learn More
-          </Link>
-          <Link target='contact' classes='btn btn-light text-dark rounded-0'>
-            Contact Us
-          </Link> */}
+          <button classes='btn btn-primary rounded-0 mr-2'>English</button>
+          <button classes='btn btn-light text-dark rounded-0'>
+            Tiếng Việt
+          </button>
         </div>
       </div>
     </div>
