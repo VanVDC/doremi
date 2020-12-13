@@ -8,15 +8,18 @@ const Contact = () => {
           <span>Contact </span>Us
         </h3>
         <h6 className='section-subtitle mr-auto ml-auto'>
-          Individualized quality care that meets the total needs of the patient
-          Individualized quality care that quality care that Individualized
-          quality care that meets the total.
+          If you have any questions, comments or concerns, please email us your
+          comments and we will get back to you ASAP. Thank you for visiting
+          Doremi Music!
         </h6>
       </div>
       <div className='section-content'>
         <div className='row'>
           <div className='col-md-9 col-lg-7 mr-auto ml-auto'>
-            <form>
+            <form
+              action='https://formspree.io/TNdoremi@gmail.com '
+              method='POST'
+            >
               <div className='form-group'>
                 <input
                   type='text'
@@ -41,7 +44,10 @@ const Contact = () => {
                 />
               </div>
               <div className='form-group text-center'>
-                <button className='btn btn-block btn-primary rounded-0 mr-auto ml-auto'>
+                <button
+                  type='submit'
+                  className='btn btn-block btn-primary rounded-0 mr-auto ml-auto'
+                >
                   Send
                 </button>
               </div>

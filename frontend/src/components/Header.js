@@ -14,7 +14,7 @@ const Header = () => {
                 alt='logo'
                 src={logo}
                 width='100px'
-                height='60px'
+                height='50px'
                 className='d-inline-block align-top'
               />{' '}
               {/* <i className='fas fa-music'></i> Doremi */}

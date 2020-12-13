@@ -11,8 +11,7 @@ const Main = () => {
         <div className='intro container text-center text-light'>
           <h1 className='title text-light'>WELCOME</h1>
           <h2 className='sub-title mb-4 text-light'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-            laborum minus molestiae.
+            Truong Nhac-Doremi Music Lessons
           </h2>
           <button classes='btn btn-primary rounded-0 mr-2'>English</button>
           <button classes='btn btn-light text-dark rounded-0'>
