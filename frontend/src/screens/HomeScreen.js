@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import About from '../components/HomeComponents/About'
 import Main from '../components/HomeComponents/Main'
+import Services from '../components/HomeComponents/Services'
 import Map from '../components/HomeComponents/Map'
 import Fact from '../components/HomeComponents/Fact'
 import Contact from '../components/HomeComponents/Contact'
@@ -15,6 +16,7 @@ const HomeScreen = () => {
     <div>
       <Main lan={setLan} />
       <About lan={lan} />
+      <Services lan={lan} />
       <Fact lan={lan} />
       <Contact lan={lan} />
       <Map />
