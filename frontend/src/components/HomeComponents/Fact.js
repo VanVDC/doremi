@@ -1,5 +1,5 @@
 import React from 'react'
-import bgImage from '../assets/img/facts_bg.jpg'
+import bgImage from '../../assets/img/facts_bg.jpg'
 
 const Fact = ({ lan }) => {
   return (

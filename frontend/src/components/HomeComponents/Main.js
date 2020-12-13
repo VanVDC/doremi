@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import bgImage from '../assets/img/home_bg.jpg'
+import bgImage from '../../assets/img/home_bg.jpg'
 
 const Main = ({ lan }) => {
   const initialBool = JSON.parse(localStorage.getItem('lang')) || false
