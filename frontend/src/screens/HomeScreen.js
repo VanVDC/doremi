@@ -4,6 +4,7 @@ import Main from '../components/Main'
 import Map from '../components/Map'
 import Fact from '../components/Fact'
 import Contact from '../components/Contact'
+import HomeFooter from '../components/HomeFooter'
 
 const HomeScreen = () => {
   let init = JSON.parse(localStorage.getItem('lang'))
@@ -17,6 +18,7 @@ const HomeScreen = () => {
       <Fact lan={lan} />
       <Contact lan={lan} />
       <Map />
+      <HomeFooter />
     </div>
   )
 }

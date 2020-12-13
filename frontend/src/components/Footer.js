@@ -1,15 +1,10 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
 
 const Footer = () => {
   return (
-    <footer>
-      <Container>
-        <Row>
-          <Col className='text-center py-3'>Copyright &copy; Doremi</Col>
-        </Row>
-      </Container>
-    </footer>
+    <div className='bottom-footer pt-3 pb-3 text-center'>
+      <small>Copyright &copy; Doremi</small>
+    </div>
   )
 }
 
