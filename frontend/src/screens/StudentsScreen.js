@@ -6,19 +6,30 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 
 import { listStudents } from '../actions/studentActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
-const StudentsScreen = ({ match }) => {
+const StudentsScreen = ({ history }) => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, error, students } = studentList
 
   useEffect(() => {
-    dispatch(listStudents)
+    dispatch(listStudents())
   }, [dispatch])
+
+  dispatch(listStudents())
+}, [dispatch, history, successDelete, userInfo])
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteUser(id))
+    }
+  }
 
   return (
     <>
-      <h1>Users</h1>
+      <h1>Students</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -30,37 +41,42 @@ const StudentsScreen = ({ match }) => {
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
-              <th>ADMIN</th>
+              <th>GENDER</th>
+              <th>CLASS DAY</th>
+              <th>CLASS TIME</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name}</td>
+            {students.map((student) => (
+              <tr key={student._id}>
+                <td>{student._id}</td>
+                <td>{student.lastName}, {student.firstName}</td>
                 <td>
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                  <a href={`mailto:${student.email}`}>{student.email}</a>
                 </td>
                 <td>
-                  {user.isAdmin ? (
-                    <i className='fas fa-check' style={{ color: 'green' }}></i>
-                  ) : (
-                    <i className='fas fa-times' style={{ color: 'red' }}></i>
-                  )}
+                  {student.gender}
                 </td>
                 <td>
-                  {' '}
-                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                  {student.classDay}
+                </td>
+                <td>
+                  {student.classTime}
+                </td>
+                
+                <td>
+                  {/* {' '}
+                  <LinkContainer to={`/admin/student/${student._id}/edit`}>
                     <Button variant='light ' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>
-                  </LinkContainer>
+                  </LinkContainer> */}
                 </td>
                 <Button
                   variant='danger'
                   className='btn-sm'
-                  onClick={() => deleteHandler(user._id)}
+                  onClick={() => deleteHandler(student._id)}
                 >
                   <i className='fas fa-trash'></i>
                 </Button>
