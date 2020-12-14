@@ -1,23 +1,13 @@
 import React from 'react'
-import { Card, CardColumns, Carousel } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 import ReactPlayer from 'react-player'
+import { youtubeData } from '../../data/data'
 
 const YoutubeCarousel = () => {
-  const videos = [
-    'QT8TkdmG0Yo',
-    'S0N1k47hLUI',
-    'JgVfdksHHFI',
-    '4QoJTP5kdw4',
-    'YuzyxKmyqyk',
-    'VKiN-M_pWms',
-    'eiPNcD-TiVw',
-    'TcerHHfgVfM',
-    'QUwUZMk0UQc',
-  ]
   return (
     <div className='d-flex justify-content-center m-3'>
       <Carousel pause='hover'>
-        {videos.map((video) => (
+        {youtubeData.map((video) => (
           <Carousel.Item>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${video}`}
