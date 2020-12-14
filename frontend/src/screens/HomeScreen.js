@@ -20,8 +20,8 @@ const HomeScreen = () => {
       <About lan={lan} />
       <Services lan={lan} />
       <ImageCarousel />
-      <YotubeCarousel />
       <Fact lan={lan} />
+      <YotubeCarousel />
       <Contact lan={lan} />
       <Map />
       <HomeFooter />

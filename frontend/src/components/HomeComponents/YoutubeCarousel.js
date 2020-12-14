@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardColumns } from 'react-bootstrap'
+import { Card, CardColumns, Carousel } from 'react-bootstrap'
 import ReactPlayer from 'react-player'
 
 const YoutubeCarousel = () => {
@@ -15,22 +15,22 @@ const YoutubeCarousel = () => {
     'QUwUZMk0UQc',
   ]
   return (
-    <CardColumns className='bg-light p-3'>
-      {videos.map((video) => (
-        <Card className='text-center p-3'>
-          <Card.Body>
+    <div className='d-flex justify-content-center m-3'>
+      <Carousel pause='hover'>
+        {videos.map((video) => (
+          <Carousel.Item>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${video}`}
               muted={false}
               controls={true}
               volume={0.3}
-              width={'400px'}
-              height={'200px'}
+              width={'500px'}
+              height={'300px'}
             />
-          </Card.Body>
-        </Card>
-      ))}
-    </CardColumns>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   )
 }
 
