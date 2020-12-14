@@ -9,7 +9,7 @@ import { listStudents } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-const StudentsScreen = ({ history }) => {
+const StudentsScreen = () => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, error, students } = studentList
@@ -17,9 +17,6 @@ const StudentsScreen = ({ history }) => {
   useEffect(() => {
     dispatch(listStudents())
   }, [dispatch])
-
-  dispatch(listStudents())
-}, [dispatch, history, successDelete, userInfo])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
@@ -51,20 +48,16 @@ const StudentsScreen = ({ history }) => {
             {students.map((student) => (
               <tr key={student._id}>
                 <td>{student._id}</td>
-                <td>{student.lastName}, {student.firstName}</td>
+                <td>
+                  {student.lastName}, {student.firstName}
+                </td>
                 <td>
                   <a href={`mailto:${student.email}`}>{student.email}</a>
                 </td>
-                <td>
-                  {student.gender}
-                </td>
-                <td>
-                  {student.classDay}
-                </td>
-                <td>
-                  {student.classTime}
-                </td>
-                
+                <td>{student.gender}</td>
+                <td>{student.classDay}</td>
+                <td>{student.classTime}</td>
+
                 <td>
                   {/* {' '}
                   <LinkContainer to={`/admin/student/${student._id}/edit`}>
