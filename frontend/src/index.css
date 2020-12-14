@@ -105,6 +105,11 @@ body {
   color: #6f6f6f;
 }
 
+/* Services */
+.services {
+  background-color: #f6f8fb;
+}
+
 /* Facts */
 
 .facts-container {
