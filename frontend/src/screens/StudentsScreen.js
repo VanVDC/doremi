@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 
-const ProductScreen = ({ match }) => {
+const StudentsScreen = ({ match }) => {
   const [product, setProduct] = useState({})
 
   useEffect(() => {
@@ -73,4 +73,4 @@ const ProductScreen = ({ match }) => {
   )
 }
 
-export default ProductScreen
+export default StudentsScreen

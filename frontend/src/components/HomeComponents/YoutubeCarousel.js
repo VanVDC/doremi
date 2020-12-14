@@ -6,7 +6,7 @@ import { youtubeData } from '../../data/data'
 const YoutubeCarousel = () => {
   return (
     <div className=' d-flex justify-content-center bg-dark'>
-      <Carousel pause='hover'>
+      <Carousel pause='hover' interval={10000}>
         {youtubeData.map((video) => (
           <Carousel.Item>
             <ReactPlayer
