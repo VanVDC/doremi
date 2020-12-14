@@ -1,75 +1,75 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 
+import { listStudents } from '../actions/studentActions'
+
 const StudentsScreen = ({ match }) => {
-  const [product, setProduct] = useState({})
+  const dispatch = useDispatch()
+  const studentList = useSelector((state) => state.studentList)
+  const { loading, error, students } = studentList
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`)
-      setProduct(data)
-    }
-    fetchProduct()
-  }, [match])
+    dispatch(listStudents)
+  }, [dispatch])
 
   return (
-    <div>
-      <Link className='btn btn-light my-3' to='/'>
-        {' '}
-        Go Back
-      </Link>
-      <Row>
-        <Col md={6}>
-          <Image src={product.image} alt={product.name} fluid />
-        </Col>
-        <Col md={3}>
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h3>{product.name}</h3>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              {/* <Rating value={product.rating} text={`${product.numReviews} reviews`} /> */}
-            </ListGroup.Item>
-            <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-            <ListGroup.Item>Description: {product.description}</ListGroup.Item>
-          </ListGroup>
-        </Col>
-        <Col md={3}>
-          <Card>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Price:</Col>
-                  <Col>
-                    <strong>${product.price}</strong>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Status:</Col>
-                  <Col>
-                    {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
+    <>
+      <h1>Users</h1>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{error}</Message>
+      ) : (
+        <Table striped bordered hover responsive className='table-sm'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>ADMIN</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user._id}>
+                <td>{user._id}</td>
+                <td>{user.name}</td>
+                <td>
+                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                </td>
+                <td>
+                  {user.isAdmin ? (
+                    <i className='fas fa-check' style={{ color: 'green' }}></i>
+                  ) : (
+                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                  )}
+                </td>
+                <td>
+                  {' '}
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                    <Button variant='light ' className='btn-sm'>
+                      <i className='fas fa-edit'></i>
+                    </Button>
+                  </LinkContainer>
+                </td>
                 <Button
-                  className='btn-block'
-                  type='button'
-                  disabled={product.countInStock === 0}
+                  variant='danger'
+                  className='btn-sm'
+                  onClick={() => deleteHandler(user._id)}
                 >
-                  Add To Cart
+                  <i className='fas fa-trash'></i>
                 </Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Col>
-      </Row>
-    </div>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
+    </>
   )
 }
 
