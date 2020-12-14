@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 
 import { listStudents } from '../actions/studentActions'
 import Loader from '../components/Loader'
@@ -18,11 +16,11 @@ const StudentsScreen = () => {
     dispatch(listStudents())
   }, [dispatch])
 
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteUser(id))
-    }
-  }
+  // const deleteHandler = (id) => {
+  //   if (window.confirm('Are you sure?')) {
+  //     dispatch(deleteUser(id))
+  //   }
+  // }
 
   return (
     <>
@@ -69,7 +67,7 @@ const StudentsScreen = () => {
                 <Button
                   variant='danger'
                   className='btn-sm'
-                  onClick={() => deleteHandler(student._id)}
+                  // onClick={() => deleteHandler(student._id)}
                 >
                   <i className='fas fa-trash'></i>
                 </Button>

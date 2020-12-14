@@ -1,4 +1,4 @@
-import axio from 'axios'
+import axios from 'axios'
 import {
   STUDENT_DETAILS_FAIL,
   STUDENT_DETAILS_REQUEST,

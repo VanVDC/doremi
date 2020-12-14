@@ -8,6 +8,7 @@ import YotubeCarousel from '../components/HomeComponents/YoutubeCarousel'
 import Fact from '../components/HomeComponents/Fact'
 import Contact from '../components/HomeComponents/Contact'
 import HomeFooter from '../components/HomeComponents/HomeFooter'
+import Footer from '../components/HomeComponents/Footer'
 
 const HomeScreen = () => {
   let init = JSON.parse(localStorage.getItem('lang'))
@@ -25,6 +26,7 @@ const HomeScreen = () => {
       <Contact lan={lan} />
       <Map />
       <HomeFooter />
+      <Footer />
     </div>
   )
 }
