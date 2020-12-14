@@ -46,7 +46,7 @@ const Contact = ({ lan }) => {
                   type='email'
                   className='form-control rounded-0'
                   aria-describedby='emailHelp'
-                  placeholder={lan ? 'Nhập Email' : 'Enter email...'}
+                  placeholder={lan ? 'Nhập Email' : 'Enter Email...'}
                 />
               </div>
               <div className='form-group'>

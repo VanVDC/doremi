@@ -5,7 +5,7 @@ import { youtubeData } from '../../data/data'
 
 const YoutubeCarousel = () => {
   return (
-    <div className='d-flex justify-content-center m-3'>
+    <div className=' d-flex justify-content-center bg-dark'>
       <Carousel pause='hover'>
         {youtubeData.map((video) => (
           <Carousel.Item>
@@ -14,8 +14,8 @@ const YoutubeCarousel = () => {
               muted={false}
               controls={true}
               volume={0.3}
-              width={'500px'}
-              height={'300px'}
+              width={'750px'}
+              height={'400px'}
             />
           </Carousel.Item>
         ))}
