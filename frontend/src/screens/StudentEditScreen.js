@@ -17,6 +17,7 @@ const StudentEditScreen = ({ match, history }) => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [dob, setDOB] = useState('')
+  const [gender, setGender] = useState('')
   const [parent, setParent] = useState('')
   const [instrument, setInstrument] = useState('')
   const [setAmount, setSetAmount] = useState(0)
@@ -50,6 +51,7 @@ const StudentEditScreen = ({ match, history }) => {
       setEmail(student.email)
       setPhone(student.phone)
       setDOB(student.dob)
+      setGender(student.gender)
       setParent(student.parent)
       setInstrument(student.instrument)
       setSetAmount(student.setAmount)
@@ -123,7 +125,7 @@ const StudentEditScreen = ({ match, history }) => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Label className='bg-info text-light px-3' variant='light'>
+            <Form.Label className='bg-dark text-light px-3' variant='light'>
               Student Information
             </Form.Label>
             <Form.Row>
@@ -149,6 +151,20 @@ const StudentEditScreen = ({ match, history }) => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
+            </Form.Row>
+
+            <Form.Row>
+              <Col xs={3}>
+                <Form.Group controlId='gender'>
+                  <Form.Label>Gender</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter gender'
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
               <Col>
                 <Form.Group controlId='dob'>
                   <Form.Label>DOB</Form.Label>
@@ -161,7 +177,7 @@ const StudentEditScreen = ({ match, history }) => {
                 </Form.Group>
               </Col>
             </Form.Row>
-            {/* contact form group */}
+
             <Form.Row>
               <Col>
                 <Form.Group controlId='email'>
@@ -198,7 +214,7 @@ const StudentEditScreen = ({ match, history }) => {
               </Col>
             </Form.Row>
             <Form.Group>
-              <Form.Label className='bg-info text-light px-3' variant='light'>
+              <Form.Label className='bg-dark text-light px-3' variant='light'>
                 Address
               </Form.Label>
             </Form.Group>
@@ -248,7 +264,7 @@ const StudentEditScreen = ({ match, history }) => {
                 </Form.Group>
               </Col>
             </Form.Row>
-            <Form.Label className='bg-info text-light px-3' variant='light'>
+            <Form.Label className='bg-dark text-light px-3' variant='light'>
               Class Information
             </Form.Label>
             <Form.Row>
@@ -297,7 +313,7 @@ const StudentEditScreen = ({ match, history }) => {
                 </Form.Group>
               </Col>
             </Form.Row>
-            <Form.Label className='bg-info text-light px-3' variant='light'>
+            <Form.Label className='bg-dark text-light px-3' variant='light'>
               Others{' '}
             </Form.Label>
 
