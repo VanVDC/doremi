@@ -72,6 +72,7 @@ export const deleteStudent = asyncHandler(async (req, res) => {
 
 export const createStudent = asyncHandler(async (req, res) => {
   const student = new Student({
+    user: req.user._id,
     firstName: 'first',
     lastName: 'last',
     email: 'sample@example.com',

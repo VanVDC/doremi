@@ -9,8 +9,9 @@ import {
   createStudent,
   updateStudent,
 } from '../controllers/studentController.js'
+import { protect, admin } from '../middleware/authMiddleware.js'
 
-router.route('/').get(getStudents).post(createStudent)
+router.route('/').get(getStudents).post(protect, admin, createStudent)
 router
   .route('/:id')
   .get(getStudentById)
