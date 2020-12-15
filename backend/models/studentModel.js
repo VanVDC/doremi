@@ -44,7 +44,7 @@ const studentSchema = mongoose.Schema(
       type: String,
     },
     dob: {
-      type: Date,
+      type: String,
       required: true,
     },
     gender: {
