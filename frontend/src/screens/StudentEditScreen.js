@@ -1,0 +1,287 @@
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import FormContainer from '../components/FormContainer'
+import { listStudentDetail } from '../actions/studentActions'
+// import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+
+const StudentEditScreen = ({ match, history }) => {
+  const studentId = match.params.id
+
+  const [lastName, setLastName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [dob, setDOB] = useState('')
+  const [parent, setParent] = useState('')
+  const [instrument, setInstrument] = useState('')
+  const [setAmount, setSetAmount] = useState(0)
+  const [classDay, setClassDay] = useState('')
+  const [classTime, setClassTime] = useState('')
+  const [teacher, setTeacher] = useState('')
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+
+  const dispatch = useDispatch()
+
+  const studentDetails = useSelector((state) => state.studentDetails)
+  const { loading, error, student } = studentDetails
+
+  // const productUpdate = useSelector((state) => state.productUpdate)
+  // const {
+  //   loading: loadingUpdate,
+  //   error: errorUpdate,
+  //   success: successUpdate,
+  // } = productUpdate
+
+  useEffect(() => {
+    if (!student.firstName || student._id !== studentId) {
+      dispatch(listStudentDetail(studentId))
+    } else {
+      setLastName(student.lastName)
+      setFirstName(student.firstName)
+      setEmail(student.email)
+      setPhone(student.phone)
+      setDOB(student.dob)
+      setParent(student.parent)
+      setInstrument(student.instrument)
+      setSetAmount(student.setAmount)
+      setClassDay(student.classDay)
+      setClassTime(student.classDay)
+      setTeacher(student.teacher)
+      setStreet(student.address.street)
+      setCity(student.address.city)
+      setState(student.address.state)
+      setPostalCode(student.address.postalCode)
+    }
+  }, [dispatch, history, student, studentId])
+
+  // const uploadFileHandler = async (e) => {
+  //   const file = e.target.files[0]
+  //   const formData = new FormData()
+  //   formData.append('image', file)
+  //   setUploading(true)
+
+  //   try {
+  //     const config = {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     }
+  //     const { data } = await axios.post('/api/upload', formData, config)
+  //     setImage(data)
+  //     setUploading(false)
+  //   } catch (error) {
+  //     console.error(error)
+  //     setUploading(false)
+  //   }
+  // }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch()
+    // updateProduct({
+    //   _id: studentId,
+    //   lastName,
+    //   firstName,
+    //   email,
+    //   phone,
+    //   dob,
+    //   parent,
+    //   instrument,
+    //   setAmount,
+    //   classDay,
+    //   classTime,
+    //   teacher,
+    //   street,
+    //   city,
+    //   state,
+    //   postalCode,
+    // })
+  }
+
+  return (
+    <>
+      <Link to='/students' className='btn btn-light my-3'>
+        Go Back
+      </Link>
+      <FormContainer>
+        <h1>Edit Student</h1>
+        {/* {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>} */}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant='danger'>{error}</Message>
+        ) : (
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId='lastName'>
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter last name'
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='firstName'>
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter first name'
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='email'>
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control
+                type='email'
+                placeholder='Enter email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='phone'>
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter phone'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='dob'>
+              <Form.Label>DOB</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter dob'
+                value={dob}
+                onChange={(e) => setDOB(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='parent'>
+              <Form.Label>Parent</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter parent'
+                value={parent}
+                onChange={(e) => setParent(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='instrument'>
+              <Form.Label>Instrument</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter instrument'
+                value={instrument}
+                onChange={(e) => setInstrument(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='setAmount'>
+              <Form.Label>Set Amount</Form.Label>
+              <Form.Control
+                type='number'
+                placeholder='Enter monthly amount'
+                value={setAmount}
+                onChange={(e) => setSetAmount(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='teacher'>
+              <Form.Label>Teacher</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter teacher'
+                value={teacher}
+                onChange={(e) => setTeacher(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='classDay'>
+              <Form.Label>Class Day</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter class day'
+                value={classDay}
+                onChange={(e) => setClassDay(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='classTime'>
+              <Form.Label>Class Time</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter class time'
+                value={classTime}
+                onChange={(e) => setClassTime(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='teacher'>
+              <Form.Label>Teacher</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter teacher'
+                value={teacher}
+                onChange={(e) => setTeacher(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Address</Form.Label>
+            </Form.Group>
+
+            <Form.Group controlId='street'>
+              <Form.Label>Street</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter street'
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='city'>
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter city'
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='state'>
+              <Form.Label>State</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter State'
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='postalCode'>
+              <Form.Label>Postal Code</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter postal code'
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Button type='submit' variant='primary'>
+              Update
+            </Button>
+          </Form>
+        )}
+      </FormContainer>
+    </>
+  )
+}
+export default StudentEditScreen

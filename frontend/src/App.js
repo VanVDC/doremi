@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import HomeScreen from './screens/HomeScreen'
 import StudentsScreen from './screens/StudentsScreen'
+import StudentEditScreen from './screens/StudentEditScreen'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <main className='pt-0'>
         <Container>
           <Route path='/students' component={StudentsScreen} />
+          <Route path='/student/:id/edit' component={StudentEditScreen} />
         </Container>
       </main>
     </Router>

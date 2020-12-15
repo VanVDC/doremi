@@ -31,7 +31,7 @@ export const studentDetailsReducer = (
     case STUDENT_DETAILS_REQUEST:
       return { ...state, loading: true }
     case STUDENT_DETAILS_SUCCESS:
-      return { loading: false, product: action.payload }
+      return { loading: false, student: action.payload }
     case STUDENT_DETAILS_FAIL:
       return { loading: false, error: action.payload }
     default:

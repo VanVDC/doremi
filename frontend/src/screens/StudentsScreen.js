@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 
 import { listStudents } from '../actions/studentActions'
@@ -39,7 +39,8 @@ const StudentsScreen = () => {
               <th>GENDER</th>
               <th>CLASS DAY</th>
               <th>CLASS TIME</th>
-              <th></th>
+              <th>EDIT</th>
+              <th>DELETE</th>
             </tr>
           </thead>
           <tbody>
@@ -57,20 +58,22 @@ const StudentsScreen = () => {
                 <td>{student.classTime}</td>
 
                 <td>
-                  {/* {' '}
-                  <LinkContainer to={`/admin/student/${student._id}/edit`}>
+                  {' '}
+                  <LinkContainer to={`/student/${student._id}/edit`}>
                     <Button variant='light ' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>
-                  </LinkContainer> */}
+                  </LinkContainer>
                 </td>
-                <Button
-                  variant='danger'
-                  className='btn-sm'
-                  // onClick={() => deleteHandler(student._id)}
-                >
-                  <i className='fas fa-trash'></i>
-                </Button>
+                <td>
+                  <Button
+                    variant='danger'
+                    className='btn-sm'
+                    // onClick={() => deleteHandler(student._id)}
+                  >
+                    <i className='fas fa-trash '></i>
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>
