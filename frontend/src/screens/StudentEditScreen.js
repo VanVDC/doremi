@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { listStudentDetail } from '../actions/studentActions'
+import { listStudentDetail, updateStudent } from '../actions/studentActions'
+import { STUDENT_UPDATE_RESET } from '../constants/studentConstants'
 // import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 const StudentEditScreen = ({ match, history }) => {
@@ -35,79 +36,68 @@ const StudentEditScreen = ({ match, history }) => {
   const studentDetails = useSelector((state) => state.studentDetails)
   const { loading, error, student } = studentDetails
 
-  // const productUpdate = useSelector((state) => state.productUpdate)
-  // const {
-  //   loading: loadingUpdate,
-  //   error: errorUpdate,
-  //   success: successUpdate,
-  // } = productUpdate
+  const studentUpdate = useSelector((state) => state.studentUpdate)
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = studentUpdate
 
   useEffect(() => {
-    if (!student.firstName || student._id !== studentId) {
-      dispatch(listStudentDetail(studentId))
+    if (successUpdate) {
+      dispatch({ type: STUDENT_UPDATE_RESET })
+      history.push('/students')
     } else {
-      setLastName(student.lastName)
-      setFirstName(student.firstName)
-      setEmail(student.email)
-      setPhone(student.phone)
-      setDOB(student.dob)
-      setGender(student.gender)
-      setParent(student.parent)
-      setInstrument(student.instrument)
-      setSetAmount(student.setAmount)
-      setClassDay(student.classDay)
-      setClassTime(student.classTime)
-      setTeacher(student.teacher)
-      setKnowAboutUs(student.knowAboutUs)
-      setStreet(student.address.street)
-      setCity(student.address.city)
-      setState(student.address.state)
-      setPostalCode(student.address.postalCode)
+      if (!student.firstName || student._id !== studentId) {
+        dispatch(listStudentDetail(studentId))
+      } else {
+        setLastName(student.lastName)
+        setFirstName(student.firstName)
+        setEmail(student.email)
+        setPhone(student.phone)
+        setDOB(student.dob)
+        setGender(student.gender)
+        setParent(student.parent)
+        setInstrument(student.instrument)
+        setSetAmount(student.setAmount)
+        setClassDay(student.classDay)
+        setClassTime(student.classTime)
+        setTeacher(student.teacher)
+        setKnowAboutUs(student.knowAboutUs)
+        setStreet(student.address.street)
+        setCity(student.address.city)
+        setState(student.address.state)
+        setPostalCode(student.address.postalCode)
+      }
     }
-  }, [dispatch, history, student, studentId])
-
-  // const uploadFileHandler = async (e) => {
-  //   const file = e.target.files[0]
-  //   const formData = new FormData()
-  //   formData.append('image', file)
-  //   setUploading(true)
-
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     }
-  //     const { data } = await axios.post('/api/upload', formData, config)
-  //     setImage(data)
-  //     setUploading(false)
-  //   } catch (error) {
-  //     console.error(error)
-  //     setUploading(false)
-  //   }
-  // }
+  }, [dispatch, history, student, studentId, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch()
-    // updateProduct({
-    //   _id: studentId,
-    //   lastName,
-    //   firstName,
-    //   email,
-    //   phone,
-    //   dob,
-    //   parent,
-    //   instrument,
-    //   setAmount,
-    //   classDay,
-    //   classTime,
-    //   teacher,
-    //   street,
-    //   city,
-    //   state,
-    //   postalCode,
-    // })
+    dispatch(
+      updateStudent({
+        _id: studentId,
+        lastName,
+        firstName,
+        email,
+        phone,
+        dob,
+        parent,
+        instrument,
+        setAmount,
+        classDay,
+        classTime,
+        teacher,
+        knowAboutUs,
+        gender,
+        address: {
+          street,
+          city,
+          state,
+          postalCode,
+        },
+      })
+    )
   }
 
   return (
@@ -117,8 +107,8 @@ const StudentEditScreen = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit Student</h1>
-        {/* {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>} */}
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
