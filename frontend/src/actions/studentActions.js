@@ -16,6 +16,7 @@ import {
   STUDENT_UPDATE_SUCCESS,
   STUDENT_UPDATE_FAIL,
 } from '../constants/studentConstants'
+import { logout } from '../actions/userActions'
 
 export const listStudents = () => async (dispatch) => {
   try {
@@ -70,7 +71,7 @@ export const deleteStudent = (id) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     if (message === 'Not authorized, token failed') {
-      // dispatch(logout())
+      dispatch(logout())
     }
     dispatch({
       type: STUDENT_DELETE_FAIL,
@@ -104,7 +105,7 @@ export const createStudent = () => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     if (message === 'Not authorized, token failed') {
-      // dispatch(logout())
+      dispatch(logout())
     }
     dispatch({
       type: STUDENT_CREATE_FAIL,
@@ -143,7 +144,7 @@ export const updateStudent = (student) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     if (message === 'Not authorized, token failed') {
-      // dispatch(logout())
+      dispatch(logout())
     }
     dispatch({
       type: STUDENT_UPDATE_FAIL,

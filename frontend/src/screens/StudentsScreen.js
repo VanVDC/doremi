@@ -1,30 +1,70 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Col, Row } from 'react-bootstrap'
 
-import { listStudents } from '../actions/studentActions'
+import {
+  createStudent,
+  deleteStudent,
+  listStudents,
+} from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import { STUDENT_CREATE_RESET } from '../constants/studentConstants'
 
-const StudentsScreen = () => {
+const StudentsScreen = ({ history }) => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, error, students } = studentList
 
-  useEffect(() => {
-    dispatch(listStudents())
-  }, [dispatch])
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
-  // const deleteHandler = (id) => {
-  //   if (window.confirm('Are you sure?')) {
-  //     dispatch(deleteUser(id))
-  //   }
-  // }
+  const studentDelete = useSelector((state) => state.studentDelete)
+  const { success: successDelete } = studentDelete
+
+  const studentCreate = useSelector((state) => state.studentCreate)
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    succes: successCreate,
+    student: createdStudent,
+  } = studentCreate
+
+  useEffect(() => {
+    dispatch({ type: STUDENT_CREATE_RESET })
+    if (userInfo) {
+      dispatch(listStudents())
+    }
+    if (successCreate) {
+      history.push(`/student/${createdStudent._id}`)
+    } else {
+      dispatch(listStudents())
+    }
+    dispatch(listStudents())
+  }, [dispatch, history, successDelete, userInfo])
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteStudent(id))
+    }
+  }
+  const createStudentHandler = () => {
+    dispatch(createStudent())
+  }
 
   return (
     <>
-      <h1>Students</h1>
+      <Row className='align-items-center'>
+        <Col>
+          <h1>Students</h1>
+        </Col>
+        <Col className='text-right'>
+          <Button className='my-3' onClick={createStudentHandler}>
+            <i className='fas fa-plus'></i> Create Student
+          </Button>
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -69,7 +109,7 @@ const StudentsScreen = () => {
                   <Button
                     variant='danger'
                     className='btn-sm'
-                    // onClick={() => deleteHandler(student._id)}
+                    onClick={() => deleteHandler(student._id)}
                   >
                     <i className='fas fa-trash '></i>
                   </Button>
