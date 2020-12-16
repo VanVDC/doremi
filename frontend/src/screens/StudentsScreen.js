@@ -21,7 +21,11 @@ const StudentsScreen = ({ history }) => {
   const { userInfo } = userLogin
 
   const studentDelete = useSelector((state) => state.studentDelete)
-  const { success: successDelete } = studentDelete
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = studentDelete
 
   const studentCreate = useSelector((state) => state.studentCreate)
   const {
@@ -33,16 +37,22 @@ const StudentsScreen = ({ history }) => {
 
   useEffect(() => {
     dispatch({ type: STUDENT_CREATE_RESET })
-    if (userInfo) {
-      dispatch(listStudents())
+    if (!userInfo) {
+      history.push('/login')
     }
     if (successCreate) {
-      history.push(`/student/${createdStudent._id}`)
+      history.push(`/student/${createdStudent._id}/edit`)
     } else {
       dispatch(listStudents())
     }
-    dispatch(listStudents())
-  }, [dispatch, history, successDelete, userInfo])
+  }, [
+    dispatch,
+    history,
+    successDelete,
+    createdStudent,
+    successCreate,
+    userInfo,
+  ])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
@@ -65,6 +75,10 @@ const StudentsScreen = ({ history }) => {
           </Button>
         </Col>
       </Row>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
