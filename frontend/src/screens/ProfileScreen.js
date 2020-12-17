@@ -4,10 +4,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-// import Meta from '../components/Meta'
 
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
-import { listMyOrders } from '../actions/orderActions'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -27,15 +25,12 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
-  const orderListMy = useSelector((state) => state.orderListMy)
-  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     } else {
       if (!user || !user.name) {
         dispatch(getUserDetails('profile'))
-        dispatch(listMyOrders())
       } else {
         setName(user.name)
         setEmail(user.email)
