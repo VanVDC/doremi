@@ -36,7 +36,7 @@ const UserListScreen = ({ history }) => {
     <>
       <Row className='align-items-center'>
         <Col>
-          <h1>Students</h1>
+          <h1>Users</h1>
         </Col>
         <Col className='text-right'>
           <LinkContainer to={`/admin/adduser`}>
