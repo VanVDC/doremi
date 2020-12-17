@@ -10,6 +10,7 @@ import StudentsScreen from './screens/StudentsScreen'
 import StudentEditScreen from './screens/StudentEditScreen'
 // import ProfileScreen from './screens/ProfileScreen'
 // import UserListScreen from './screens/UserListScreen'
+// import UserEditScreen from './screens/UserEditScreen'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/login' component={LoginScreen} />
           {/* <Route path='/profile' component={ProfileScreen} /> */}
           {/* <Route path='/admin/userlist' component={UserListScreen} /> */}
+          {/* <Route path='/admin/user/:id/edit' component={UserEditScreen} /> */}
         </Container>
       </main>
     </Router>
