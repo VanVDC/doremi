@@ -68,7 +68,7 @@ export const addUser = (name, email, password) => async (dispatch) => {
       },
     }
     const { data } = await axios.post(
-      '/apu/users',
+      '/api/users',
       { name, email, password },
       config
     )

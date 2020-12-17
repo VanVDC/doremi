@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -34,7 +34,18 @@ const UserListScreen = ({ history }) => {
   }
   return (
     <>
-      <h1>Users</h1>
+      <Row className='align-items-center'>
+        <Col>
+          <h1>Students</h1>
+        </Col>
+        <Col className='text-right'>
+          <LinkContainer to={`/admin/adduser`}>
+            <Button className='my-3'>
+              <i className='fas fa-plus'></i> Add New User
+            </Button>
+          </LinkContainer>
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : error ? (
