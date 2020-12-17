@@ -31,33 +31,44 @@ const Header = () => {
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          {userInfo ? (
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='ml-auto'>
-                <LinkContainer to='/students'>
-                  <Nav.Link>
-                    {' '}
-                    <i className='fas fa-users'></i> Students
-                  </Nav.Link>
-                </LinkContainer>
-                <LinkContainer to='/'>
-                  <Nav.Link onClick={logoutHandler}>
-                    <i className='fas fa-user'></i> Sign Out
-                  </Nav.Link>
-                </LinkContainer>
-              </Nav>
-            </Navbar.Collapse>
-          ) : (
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='ml-auto'>
+
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ml-auto'>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id='username'>
+                  <LinkContainer to='/students'>
+                    <Nav.Link>
+                      {' '}
+                      <i className='fas fa-users'></i> Students
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
                 <LinkContainer to='/login'>
                   <Nav.Link>
                     <i className='fas fa-user'></i> Sign In
                   </Nav.Link>
                 </LinkContainer>
-              </Nav>
-            </Navbar.Collapse>
-          )}
+              )}
+
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  {/* <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer> */}
+                </NavDropdown>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>
