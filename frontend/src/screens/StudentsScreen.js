@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Col, Row } from 'react-bootstrap'
 import Paginate from '../components/Paginate'
+import Meta from '../components/Meta'
 
 import {
   createStudent,
@@ -75,6 +76,8 @@ const StudentsScreen = ({ history, match }) => {
 
   return (
     <>
+      <Meta title={'Students'} />
+
       <Row className='align-items-center'>
         <Col>
           <h1>Students</h1>

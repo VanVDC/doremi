@@ -4,6 +4,8 @@ import { Table, Button, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
+
 import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
@@ -34,6 +36,8 @@ const UserListScreen = ({ history }) => {
   }
   return (
     <>
+      <Meta title={'Users'} />
+
       <Row className='align-items-center'>
         <Col>
           <h1>Users</h1>

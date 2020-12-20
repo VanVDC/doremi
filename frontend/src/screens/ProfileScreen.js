@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
@@ -49,7 +50,7 @@ const ProfileScreen = ({ location, history }) => {
   }
   return (
     <>
-      {/* <Meta title={name + "'s Profile"} /> */}
+      <Meta title={name + "'s Profile"} />
       <Row>
         <Col>
           <h2>Update User Profile</h2>

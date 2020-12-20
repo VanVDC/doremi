@@ -9,6 +9,7 @@ import Fact from '../components/HomeComponents/Fact'
 import Contact from '../components/HomeComponents/Contact'
 import HomeFooter from '../components/HomeComponents/HomeFooter'
 import Footer from '../components/HomeComponents/Footer'
+import Meta from '../components/Meta'
 
 const HomeScreen = () => {
   let init = JSON.parse(localStorage.getItem('lang'))
@@ -17,6 +18,8 @@ const HomeScreen = () => {
 
   return (
     <div>
+      <Meta />
+
       <Main lan={setLan} />
       <About lan={lan} />
       <Services lan={lan} />

@@ -6,6 +6,8 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUser } from '../actions/userActions'
 import FormContainer from '../components/FormContainer'
+import Meta from '../components/Meta'
+
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 const UserEditScreen = ({ match, history }) => {
@@ -49,6 +51,7 @@ const UserEditScreen = ({ match, history }) => {
 
   return (
     <>
+      <Meta title={`Edit ${name}`} />
       <Link to='/admin/userlist' className='btn btn-light my-3'>
         {' '}
         Go Back

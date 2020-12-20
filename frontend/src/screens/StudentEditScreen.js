@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listStudentDetail, updateStudent } from '../actions/studentActions'
 import { STUDENT_UPDATE_RESET } from '../constants/studentConstants'
-// import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import Meta from '../components/Meta'
 
 const StudentEditScreen = ({ match, history }) => {
   const studentId = match.params.id
@@ -102,6 +102,8 @@ const StudentEditScreen = ({ match, history }) => {
 
   return (
     <>
+      <Meta title={`Edit ${firstName} ${lastName}`} />
+
       <Link to='/students' className='btn btn-light my-3'>
         Go Back
       </Link>
