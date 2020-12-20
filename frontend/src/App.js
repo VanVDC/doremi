@@ -20,7 +20,7 @@ function App() {
       <Route path='/' component={HomeScreen} exact />
       <main className='pt-0'>
         <Container>
-          <Route path='/students' component={StudentsScreen} />
+          <Route path='/students' component={StudentsScreen} exact />
           <Route path='/student/:id/edit' component={StudentEditScreen} />
           <Route path='/login' component={LoginScreen} />
           <Route path='/admin/adduser' component={AddUserScreen} />
@@ -28,13 +28,7 @@ function App() {
           <Route path='/admin/userlist' component={UserListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/search/:keyword' component={StudentsScreen} exact />
-          <Route path='/page/:pageNumber' component={StudentsScreen} />
-
-          <Route
-            path='/search/:keyword/page/:pageNumber'
-            component={StudentsScreen}
-            exact
-          />
+          <Route path='/students/:pageNumber' component={StudentsScreen} />
         </Container>
       </main>
     </Router>
