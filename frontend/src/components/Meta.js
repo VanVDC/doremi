@@ -12,9 +12,9 @@ const Meta = ({ title, description, keywords }) => {
 }
 
 Meta.defaultProps = {
-  title: 'Welcome To EV-Wheels',
-  description: 'We sell the best personal light electric vehicles',
+  title: 'Welcome To Doremi',
+  description: 'The best Vietnamese-American music teaching studio',
   keywords:
-    'euc, electric unicycle, buy electric bicycles, cheap electric scooters',
+    'music lessons, vietnamese studio, vietnamese atlanta, doremi music',
 }
 export default Meta
