@@ -75,14 +75,21 @@ const StudentsScreen = ({ history, match }) => {
         <Col>
           <h1>Students</h1>
         </Col>
-        <Col>
-          <Route render={({ history }) => <SearchBox history={history} />} />
+        <Col className='my-3 text-center'>
+          <Route
+            className='my-3'
+            render={({ history }) => <SearchBox history={history} />}
+          />
         </Col>
-        <Col className='text-right'>
-          <Button className='my-3' onClick={createStudentHandler}>
-            <i className='fas fa-plus'></i> Create Student
-          </Button>
-        </Col>
+        {!keyword ? (
+          <Col className='text-right'>
+            <Button className='my-3' onClick={createStudentHandler}>
+              <i className='fas fa-plus'></i> Create Student
+            </Button>
+          </Col>
+        ) : (
+          <Col></Col>
+        )}
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
