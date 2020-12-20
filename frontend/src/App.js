@@ -28,6 +28,8 @@ function App() {
           <Route path='/admin/userlist' component={UserListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/search/:keyword' component={StudentsScreen} exact />
+          <Route path='/page/:pageNumber' component={StudentsScreen} />
+
           <Route
             path='/search/:keyword/page/:pageNumber'
             component={StudentsScreen}

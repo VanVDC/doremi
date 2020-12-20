@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Col, Row } from 'react-bootstrap'
+import Paginate from '../components/Paginate'
 
 import {
   createStudent,
@@ -16,11 +17,13 @@ import SearchBox from '../components/SearchBox'
 import { STUDENT_CREATE_RESET } from '../constants/studentConstants'
 
 const StudentsScreen = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1
+
   const keyword = match.params.keyword
 
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
-  const { loading, error, students } = studentList
+  const { loading, error, students, page, pages } = studentList
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -48,7 +51,7 @@ const StudentsScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/student/${createdStudent._id}/edit`)
     } else {
-      dispatch(listStudents(keyword))
+      dispatch(listStudents(keyword, pageNumber))
     }
   }, [
     dispatch,
@@ -58,6 +61,7 @@ const StudentsScreen = ({ history, match }) => {
     successCreate,
     userInfo,
     keyword,
+    pageNumber,
   ])
 
   const deleteHandler = (id) => {
@@ -100,54 +104,57 @@ const StudentsScreen = ({ history, match }) => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className='table-sm'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>GENDER</th>
-              <th>CLASS DAY</th>
-              <th>CLASS TIME</th>
-              <th>EDIT</th>
-              <th>DELETE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student) => (
-              <tr key={student._id}>
-                <td>{student._id}</td>
-                <td>
-                  {student.lastName}, {student.firstName}
-                </td>
-                <td>
-                  <a href={`mailto:${student.email}`}>{student.email}</a>
-                </td>
-                <td>{student.gender}</td>
-                <td>{student.classDay}</td>
-                <td>{student.classTime}</td>
-
-                <td>
-                  {' '}
-                  <LinkContainer to={`/student/${student._id}/edit`}>
-                    <Button variant='light ' className='btn-sm'>
-                      <i className='fas fa-edit'></i>
-                    </Button>
-                  </LinkContainer>
-                </td>
-                <td>
-                  <Button
-                    variant='danger'
-                    className='btn-sm'
-                    onClick={() => deleteHandler(student._id)}
-                  >
-                    <i className='fas fa-trash '></i>
-                  </Button>
-                </td>
+        <>
+          <Table striped bordered hover responsive className='table-sm'>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>GENDER</th>
+                <th>CLASS DAY</th>
+                <th>CLASS TIME</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {students.map((student) => (
+                <tr key={student._id}>
+                  <td>{student._id}</td>
+                  <td>
+                    {student.lastName}, {student.firstName}
+                  </td>
+                  <td>
+                    <a href={`mailto:${student.email}`}>{student.email}</a>
+                  </td>
+                  <td>{student.gender}</td>
+                  <td>{student.classDay}</td>
+                  <td>{student.classTime}</td>
+
+                  <td>
+                    {' '}
+                    <LinkContainer to={`/student/${student._id}/edit`}>
+                      <Button variant='light ' className='btn-sm'>
+                        <i className='fas fa-edit'></i>
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                  <td>
+                    <Button
+                      variant='danger'
+                      className='btn-sm'
+                      onClick={() => deleteHandler(student._id)}
+                    >
+                      <i className='fas fa-trash '></i>
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <Paginate pages={pages} page={page} isAdmin={true} />
+        </>
       )}
     </>
   )

@@ -5,23 +5,8 @@ import Student from '../models/studentModel.js'
 //@route GET /api/students
 //@access Public
 const getStudents = asyncHandler(async (req, res) => {
-  // const pageSize = 10
-  // const page = Number(req.query.pageNumber) || 1
-  // const keyword = req.query.keyword
-  //   ? {
-  //       name: {
-  //         $regex: req.query.keyword,
-  //         $options: 'i',
-  //       },
-  //     }
-  //   : {}
-  // const count = await Student.countDocuments({ ...keyword })
-  // const students = await Student.find({ ...keyword })
-  //   .limit(pageSize)
-  //   .skip(pageSize * (page - 1))
-
-  // res.json({ students, page, pages: Math.ceil(count / pageSize) })
-
+  const pageSize = 10
+  const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
     ? {
         lastName: {
@@ -30,9 +15,12 @@ const getStudents = asyncHandler(async (req, res) => {
         },
       }
     : {}
-
+  const count = await Student.countDocuments({ ...keyword })
   const students = await Student.find({ ...keyword })
-  res.json({ students })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+
+  res.json({ students, page, pages: Math.ceil(count / pageSize) })
 })
 
 //@desc Fetch single students

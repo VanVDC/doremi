@@ -18,10 +18,14 @@ import {
 } from '../constants/studentConstants'
 import { logout } from '../actions/userActions'
 
-export const listStudents = (keyword = '') => async (dispatch) => {
+export const listStudents = (keyword = '', pageNumber = '') => async (
+  dispatch
+) => {
   try {
     dispatch({ type: STUDENT_LIST_REQUEST })
-    const { data } = await axios.get(`/api/students?keyword=${keyword}`)
+    const { data } = await axios.get(
+      `/api/students?keyword=${keyword}&pageNumber=${pageNumber}`
+    )
     dispatch({ type: STUDENT_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
