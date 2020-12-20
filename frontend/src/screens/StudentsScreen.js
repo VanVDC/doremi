@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Col, Row } from 'react-bootstrap'
@@ -10,9 +12,12 @@ import {
 } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import SearchBox from '../components/SearchBox'
 import { STUDENT_CREATE_RESET } from '../constants/studentConstants'
 
-const StudentsScreen = ({ history }) => {
+const StudentsScreen = ({ history, match }) => {
+  const keyword = match.params.keyword
+
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, error, students } = studentList
@@ -43,7 +48,7 @@ const StudentsScreen = ({ history }) => {
     if (successCreate) {
       history.push(`/student/${createdStudent._id}/edit`)
     } else {
-      dispatch(listStudents())
+      dispatch(listStudents(keyword))
     }
   }, [
     dispatch,
@@ -52,6 +57,7 @@ const StudentsScreen = ({ history }) => {
     createdStudent,
     successCreate,
     userInfo,
+    keyword,
   ])
 
   const deleteHandler = (id) => {
@@ -68,6 +74,9 @@ const StudentsScreen = ({ history }) => {
       <Row className='align-items-center'>
         <Col>
           <h1>Students</h1>
+        </Col>
+        <Col>
+          <Route render={({ history }) => <SearchBox history={history} />} />
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createStudentHandler}>

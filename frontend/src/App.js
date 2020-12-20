@@ -27,6 +27,12 @@ function App() {
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/admin/userlist' component={UserListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
+          <Route path='/search/:keyword' component={StudentsScreen} exact />
+          <Route
+            path='/search/:keyword/page/:pageNumber'
+            component={StudentsScreen}
+            exact
+          />
         </Container>
       </main>
     </Router>
