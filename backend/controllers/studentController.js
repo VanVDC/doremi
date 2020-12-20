@@ -24,7 +24,7 @@ const getStudents = asyncHandler(async (req, res) => {
 
   const keyword = req.query.keyword
     ? {
-        name: {
+        lastName: {
           $regex: req.query.keyword,
           $options: 'i',
         },

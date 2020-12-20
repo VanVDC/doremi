@@ -21,7 +21,7 @@ import {
 export const studentListReducer = (state = { students: [] }, action) => {
   switch (action.type) {
     case STUDENT_LIST_REQUEST:
-      return { loading: true, students: [] }
+      return { loading: true, student: [] }
     case STUDENT_LIST_SUCCESS:
       return {
         loading: false,

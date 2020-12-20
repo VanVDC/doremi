@@ -18,10 +18,10 @@ import {
 } from '../constants/studentConstants'
 import { logout } from '../actions/userActions'
 
-export const listStudents = () => async (dispatch) => {
+export const listStudents = (keyword = '') => async (dispatch) => {
   try {
     dispatch({ type: STUDENT_LIST_REQUEST })
-    const { data } = await axios.get(`/api/students`)
+    const { data } = await axios.get(`/api/students?keyword=${keyword}`)
     dispatch({ type: STUDENT_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
