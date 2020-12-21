@@ -7,10 +7,10 @@ const YoutubeCarousel = () => {
   return (
     <div className=' d-flex justify-content-center bg-dark'>
       <Carousel pause='hover' interval={10000}>
-        {youtubeData.map((video) => (
-          <Carousel.Item>
+        {youtubeData.map((video, i) => (
+          <Carousel.Item key={i}>
             <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${video}`}
+              url={video}
               muted={false}
               controls={true}
               volume={0.3}

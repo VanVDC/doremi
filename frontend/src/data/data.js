@@ -1,14 +1,14 @@
 // videos from Youtube
 const youtubeData = [
-  'QT8TkdmG0Yo',
-  'S0N1k47hLUI',
-  'JgVfdksHHFI',
-  '4QoJTP5kdw4',
-  'YuzyxKmyqyk',
-  'VKiN-M_pWms',
-  'eiPNcD-TiVw',
-  'TcerHHfgVfM',
-  'QUwUZMk0UQc',
+  'https://www.youtube.com/watch?v=QT8TkdmG0Yo',
+  'https://www.youtube.com/watch?v=S0N1k47hLUI',
+  'https://www.youtube.com/watch?v=JgVfdksHHFI',
+  'https://www.youtube.com/watch?v=4QoJTP5kdw4',
+  'https://www.youtube.com/watch?v=YuzyxKmyqyk',
+  'https://www.youtube.com/watch?v=VKiN-M_pWms',
+  'https://www.youtube.com/watch?v=eiPNcD-TiVw',
+  'https://www.youtube.com/watch?v=TcerHHfgVfM',
+  'https://www.youtube.com/watch?v=QUwUZMk0UQc',
 ]
 
 // images from Facebook
