@@ -8,7 +8,7 @@ const Main = ({ lan }) => {
   useEffect(() => {
     localStorage.setItem('lang', JSON.stringify(viet))
     lan(viet)
-  }, [viet])
+  }, [viet, lan])
 
   const onToggle = () => {
     setViet(!viet)

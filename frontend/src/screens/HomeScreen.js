@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import About from '../components/HomeComponents/About'
 import Main from '../components/HomeComponents/Main'
 import Services from '../components/HomeComponents/Services'
