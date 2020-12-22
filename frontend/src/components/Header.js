@@ -28,7 +28,15 @@ const Header = () => {
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' className='bg-light'>
-            {userInfo ? userInfo.name : 'Dropdown'}
+            {userInfo ? (
+              userInfo.name
+            ) : (
+              <LinkContainer to='/login'>
+                <Nav.Link>
+                  <i className='fas fa-user'></i>
+                </Nav.Link>
+              </LinkContainer>
+            )}
           </Navbar.Toggle>
 
           <Navbar.Collapse id='basic-navbar-nav'>
