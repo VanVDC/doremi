@@ -74,12 +74,10 @@ const StudentEditScreen = ({ match, history }) => {
 
   const activeHandler = () => {
     setActive(!isActive)
-    console.log('inside handler ', isActive)
   }
 
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log('inside submit ', isActive)
 
     dispatch(
       updateStudent({
