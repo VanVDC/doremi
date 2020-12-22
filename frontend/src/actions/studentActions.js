@@ -142,6 +142,7 @@ export const updateStudent = (student) => async (dispatch, getState) => {
       type: STUDENT_UPDATE_SUCCESS,
       payload: data,
     })
+    dispatch({ type: STUDENT_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     const message =
       error.response && error.response.data.message
