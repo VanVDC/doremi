@@ -1,6 +1,5 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
-import ReactPlayer from 'react-player'
 import { youtubeData } from '../../data/data'
 
 const YoutubeCarousel = () => {
