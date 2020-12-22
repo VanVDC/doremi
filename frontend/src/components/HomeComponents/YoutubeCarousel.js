@@ -9,6 +9,7 @@ const YoutubeCarousel = () => {
         {youtubeData.map((video, i) => (
           <Carousel.Item key={i}>
             <iframe
+              className='class="col-sm-4"'
               src={video}
               width='750px'
               height='400px'

@@ -171,3 +171,11 @@ footer h6 {
   background-color: #181d21;
   color: #6c757d;
 }
+
+@media only screen and (max-device-width: 480px) {
+  iframe {
+    margin: 5px;
+    width: 350px;
+    height: 300px;
+  }
+}
