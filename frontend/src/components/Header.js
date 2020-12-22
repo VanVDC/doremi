@@ -25,13 +25,14 @@ const Header = () => {
                 height='50px'
                 className='d-inline-block align-top'
               />{' '}
-              {/* <i className='fas fa-music'></i> Doremi */}
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Toggle aria-controls='basic-navbar-nav' className='bg-light'>
+            {userInfo.name}
+          </Navbar.Toggle>
 
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ml-auto'>
+            <Nav className='ml-auto '>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/students'>
