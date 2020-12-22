@@ -9,14 +9,13 @@ const YoutubeCarousel = () => {
       <Carousel pause='hover' interval={10000}>
         {youtubeData.map((video, i) => (
           <Carousel.Item key={i}>
-            <ReactPlayer
-              url={video}
-              muted={false}
-              controls={true}
-              volume={0.3}
-              width={'750px'}
-              height={'400px'}
-            />
+            <iframe
+              src={video}
+              width='750px'
+              height='400px'
+              allowFullScreen
+              title={i}
+            ></iframe>
           </Carousel.Item>
         ))}
       </Carousel>

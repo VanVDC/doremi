@@ -1,4 +1,5 @@
 import path from 'path'
+import morgan from 'morgan'
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
