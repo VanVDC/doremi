@@ -111,7 +111,7 @@ const StudentsScreen = ({ history, match }) => {
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
-                <th>ID</th>
+                <th>Active</th>
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>GENDER</th>
@@ -124,7 +124,13 @@ const StudentsScreen = ({ history, match }) => {
             <tbody>
               {students.map((student) => (
                 <tr key={student._id}>
-                  <td>{student._id}</td>
+                  <td>
+                    {student.isActive ? (
+                      <div className='text-success text-center'>Active</div>
+                    ) : (
+                      <div className='text-danger text-center'>Inactive</div>
+                    )}
+                  </td>
                   <td>
                     {student.lastName}, {student.firstName}
                   </td>

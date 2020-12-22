@@ -45,7 +45,7 @@ const StudentEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: STUDENT_UPDATE_RESET })
-      history.push(`/student/${studentId}/edit`)
+      history.push('/students')
     } else {
       if (!student.firstName || student._id !== studentId) {
         dispatch(listStudentDetail(studentId))
