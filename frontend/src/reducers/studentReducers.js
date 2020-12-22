@@ -89,7 +89,7 @@ export const studentUpdateReducer = (state = { student: {} }, action) => {
     case STUDENT_UPDATE_FAIL:
       return { loading: false, error: action.payload }
     case STUDENT_UPDATE_RESET:
-      return { product: {} }
+      return { student: {} }
     default:
       return state
   }

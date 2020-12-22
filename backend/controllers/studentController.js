@@ -105,6 +105,7 @@ export const updateStudent = asyncHandler(async (req, res) => {
     classDay,
     classTime,
     address,
+    isActive,
   } = req.body
   const student = await Student.findById(req.params.id)
   if (student) {
@@ -121,6 +122,7 @@ export const updateStudent = asyncHandler(async (req, res) => {
     student.phone = phone
     student.classDay = classDay
     student.classTime = classTime
+    student.isActive = isActive
     student.address = Object.assign({}, address)
 
     const updatedStudent = await student.save()
@@ -130,3 +132,18 @@ export const updateStudent = asyncHandler(async (req, res) => {
     throw new Error('Student not found')
   }
 })
+
+// export const updateStudentActiveToggle = asyncHandler(async (req, res) => {
+//   const student = await Student.findById(req.params.id)
+
+//   if (student) {
+//     student.isActive = !student.isActive
+
+//     const updatedStudent = await student.save()
+
+//     res.json(updatedStudent)
+//   } else {
+//     res.status(404)
+//     throw new Error('Student not found')
+//   }
+// })

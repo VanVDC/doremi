@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -29,6 +29,7 @@ const StudentEditScreen = ({ match, history }) => {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [postalCode, setPostalCode] = useState('')
+  const [isActive, setActive] = useState(null)
 
   const dispatch = useDispatch()
 
@@ -41,11 +42,10 @@ const StudentEditScreen = ({ match, history }) => {
     error: errorUpdate,
     success: successUpdate,
   } = studentUpdate
-
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: STUDENT_UPDATE_RESET })
-      history.push('/students')
+      history.push(`/student/${studentId}/edit`)
     } else {
       if (!student.firstName || student._id !== studentId) {
         dispatch(listStudentDetail(studentId))
@@ -67,12 +67,20 @@ const StudentEditScreen = ({ match, history }) => {
         setCity(student.address.city)
         setState(student.address.state)
         setPostalCode(student.address.postalCode)
+        setActive(student.isActive)
       }
     }
   }, [dispatch, history, student, studentId, successUpdate])
 
+  const activeHandler = () => {
+    setActive(!isActive)
+    console.log('inside handler ', isActive)
+  }
+
   const submitHandler = (e) => {
     e.preventDefault()
+    console.log('inside submit ', isActive)
+
     dispatch(
       updateStudent({
         _id: studentId,
@@ -89,6 +97,7 @@ const StudentEditScreen = ({ match, history }) => {
         teacher,
         knowAboutUs,
         gender,
+        isActive,
         address: {
           street,
           city,
@@ -326,6 +335,25 @@ const StudentEditScreen = ({ match, history }) => {
                 value={knowAboutUs}
                 onChange={(e) => setKnowAboutUs(e.target.value)}
               ></Form.Control>
+              <ListGroup.Item className='mt-3'>
+                {isActive ? (
+                  <Button
+                    type='button'
+                    className='btn btn-block bg-success'
+                    onClick={activeHandler}
+                  >
+                    Currently Active
+                  </Button>
+                ) : (
+                  <Button
+                    type='button'
+                    className='btn btn-block bg-danger'
+                    onClick={activeHandler}
+                  >
+                    Currently Inactive
+                  </Button>
+                )}
+              </ListGroup.Item>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
