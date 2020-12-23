@@ -17,6 +17,7 @@ const getStudents = asyncHandler(async (req, res) => {
     : {}
   const count = await Student.countDocuments({ ...keyword })
   const students = await Student.find({ ...keyword })
+    .sort({ isActive: -1, lastName: 1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
