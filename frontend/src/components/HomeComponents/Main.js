@@ -23,17 +23,23 @@ const Main = ({ lan }) => {
         <div className='intro container text-center text-light'>
           <h1 className='title text-light'>{viet ? 'CHÀO MỪNG' : 'WELCOME'}</h1>
           <h2 className='sub-title mb-4 text-light'>
-            Truong Nhac-Doremi Music Lessons
+            <span className='border border-danger text-light p-1 m-1'>
+              Truong Nhac
+            </span>
+            - Doremi Music Lessons
           </h2>
           {viet ? (
             <button
               onClick={onToggle}
-              classes='btn btn-light text-dark rounded-0'
+              className='btn btn-outline-light  text-dark rounded-1'
             >
               English
             </button>
           ) : (
-            <button onClick={onToggle} classes='btn btn-primary rounded-0 mr-2'>
+            <button
+              onClick={onToggle}
+              className='btn btn-outline-dark text-light rounded-0 mr-2'
+            >
               Tiếng Việt{' '}
             </button>
           )}
