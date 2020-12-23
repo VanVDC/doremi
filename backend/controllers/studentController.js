@@ -16,12 +16,19 @@ const getStudents = asyncHandler(async (req, res) => {
       }
     : {}
   const count = await Student.countDocuments({ ...keyword })
+  const active = await Student.countDocuments({ isActive: true })
   const students = await Student.find({ ...keyword })
     .sort({ isActive: -1, lastName: 1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
-  res.json({ students, page, pages: Math.ceil(count / pageSize) })
+  res.json({
+    students,
+    page,
+    count,
+    active,
+    pages: Math.ceil(count / pageSize),
+  })
 })
 
 //@desc Fetch single students

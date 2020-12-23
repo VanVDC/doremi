@@ -28,6 +28,8 @@ export const studentListReducer = (state = { students: [] }, action) => {
         students: action.payload.students,
         pages: action.payload.pages,
         page: action.payload.page,
+        count: action.payload.count,
+        active: action.payload.active,
       }
     case STUDENT_LIST_FAIL:
       return { loading: false, error: action.payload }

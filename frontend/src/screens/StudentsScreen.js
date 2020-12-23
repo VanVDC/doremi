@@ -24,7 +24,7 @@ const StudentsScreen = ({ history, match }) => {
 
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
-  const { loading, error, students, page, pages } = studentList
+  const { loading, error, students, count, active, page, pages } = studentList
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -80,7 +80,9 @@ const StudentsScreen = ({ history, match }) => {
 
       <Row className='align-items-center'>
         <Col>
-          <h1>Students</h1>
+          <h1>{count} Students</h1>
+          <div className='text-success'>{active} Actives</div>
+          <div className='text-danger'>{count - active} Inactives</div>
         </Col>
         <Col className='my-3 text-center'>
           <Route
