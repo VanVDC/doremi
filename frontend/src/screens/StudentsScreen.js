@@ -132,13 +132,13 @@ const StudentsScreen = ({ history, match }) => {
                     )}
                   </td>
                   <td>
-                    {student.lastName}, {student.firstName}
+                    {student.lastName.toUpperCase()}, {student.firstName}
                   </td>
                   <td>
                     <a href={`mailto:${student.email}`}>{student.email}</a>
                   </td>
                   <td>{student.gender}</td>
-                  <td>{student.classDay}</td>
+                  <td>{student.classDay.toUpperCase()}</td>
                   <td>{student.classTime}</td>
 
                   <td>
