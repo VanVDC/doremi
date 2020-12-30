@@ -4,10 +4,8 @@ A MERN music website with student and user management functionality.
 
 #### Features:
 
-- Add student
-
-- Add user
-  
+- Add student and user
+  ![Create new student](./frontend/src/assets/demo.gif)
 
 #### Instructions:
 
@@ -23,20 +21,23 @@ git clone: https://github.com/VanVDC/doremi.git
 - create JWT secret word
 
 .env
+
 ```
 NODE_ENV = development
 PORT = 5000
 ```
+
 ```
 MONGO_URL=your-key-here
 ```
+
 ```
 JWT_SECRETL=your-JWT-secret
 ```
 
-
 - `npm dev` to start the client and server together
 - Visit `localhost:3000`
+
 #### Demo:
 
 - [Demo](https://doremimusiclessons.herokuapp.com/)
