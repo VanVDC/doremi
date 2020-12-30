@@ -2,7 +2,7 @@
 
 A MERN music website with student and user management functionality.
 
-- Frontend with React.js and redux to create dynamic components
+- Frontend with React.js, Redux,and Bootstrap to create dynamic components
 - Backend with Express.js, Node.js, and MongoDB to create REST API for students and users with login and authentication functionality.
 
 #### Features:
