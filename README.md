@@ -5,10 +5,9 @@ A MERN music website with student and user management functionality.
 #### Features:
 
 - Add student
-  ![Create new student](./public/createStudent.gif)
+
 - Add user
-  ![Create Invoice](./public/createInvoice.gif)
-  ![Remove items](./public/remove.gif)
+  
 
 #### Instructions:
 
@@ -18,26 +17,29 @@ A MERN music website with student and user management functionality.
 git clone: https://github.com/VanVDC/doremi.git
 ```
 
-- `npm install`
-- Create a firebase account [Firebase](https://firebase.google.com/)
-- Create an `.env` file and add your firebase config
+- `npm install` for root and frontend
+- Create an `.env` file in the root
+- Create a mongoDB account and get the DB link
+- create JWT secret word
 
+.env
 ```
-REACT_APP_GOOGLE_AUTH_DOMAIN=""
-REACT_APP_GOOGLE_DATABASE_URL=""
-REACT_APP_GOOGLE_PROJECT_ID=""
-REACT_APP_GOOGLE_STORAGE_BUCKET=""
-REACT_APP_GOOGLE_MESSAGING_SENDER_ID=""
-REACT_APP_GOOGLE_APP_ID=""
-REACT_APP_GOOGLE_MEASUREMENT_ID=""
+NODE_ENV = development
+PORT = 5000
+```
+```
+MONGO_URL=your-key-here
+```
+```
+JWT_SECRETL=your-JWT-secret
 ```
 
-- `npm start`
+
+- `npm dev` to start the client and server together
 - Visit `localhost:3000`
-
 #### Demo:
 
-- [Demo](https://contacts-keeper-16284.firebaseapp.com/)
+- [Demo](https://doremimusiclessons.herokuapp.com/)
 - Login
 
 ```
@@ -51,7 +53,7 @@ pass: 123456
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [React](https://github.com/facebook/react/)
 - [Redux](https://github.com/reactjs/redux)
-- [Firebase](https://firebase.google.com/)
+- [MongoDB](https://www.mongodb.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
