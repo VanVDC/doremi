@@ -35,6 +35,10 @@ export const addUser = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('User already exists')
   }
+  if (!validator.isEmail(email)) {
+    res.status(403)
+    throw new Error('Need to be an email')
+  }
   if (!validator.isStrongPassword(password)) {
     res.status(403)
     throw new Error(
