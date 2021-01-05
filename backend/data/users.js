@@ -8,8 +8,8 @@ const users = [
     isAdmin: true,
   },
   {
-    name: 'John User',
-    email: 'john@example.com',
+    name: 'Tom User',
+    email: 'tom@gmail.com',
     password: bcrypt.hashSync('123456', 10),
   },
   {

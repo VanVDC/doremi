@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import validator from 'validator'
 import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
 
@@ -33,6 +34,10 @@ export const addUser = asyncHandler(async (req, res) => {
   if (userExists) {
     res.status(404)
     throw new Error('User already exists')
+  }
+  if (!validator.isStrongPassword(password)) {
+    res.status(403)
+    throw new Error('The password is not strong')
   }
   const user = await User.create({
     name,
