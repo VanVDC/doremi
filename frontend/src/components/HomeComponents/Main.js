@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import bgImage from '../../assets/img/home_bg.jpg'
+// import bgImage from '../../assets/img/home_bg.jpg'
 import bgVideo from '../../assets/video/piano.mp4'
 
 const Main = ({ lan }) => {
@@ -16,21 +16,21 @@ const Main = ({ lan }) => {
   }
 
   return (
-    <div id='home' className='main'>
+    <div className='main'>
       <video src={bgVideo} muted loop autoPlay></video>
       <div className='overlay'></div>
 
       <div
-        className='home-content p-5'
+        className='home-content '
         // style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className='intro container text-center text-light'>
+        <div className='intro container  text-light'>
           <h1 className='title text-light'>{viet ? 'CHÀO MỪNG' : 'WELCOME'}</h1>
           <h2 className='sub-title mb-4 text-light my-4'>
-            <span className='border border-danger text-light p-1 m-1'>
+            <span className='borderTitle border border-danger text-light p-1 m-1'>
               Truong Nhac
             </span>
-            <span className='mt-2'>- Doremi Music Lessons</span>
+            <span>- Doremi Music Lessons</span>
           </h2>
           <p>
             {viet
