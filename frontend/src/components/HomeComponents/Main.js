@@ -27,10 +27,8 @@ const Main = ({ lan }) => {
         <div className='intro container  text-light'>
           <h1 className='title text-light'>{viet ? 'CHÀO MỪNG' : 'WELCOME'}</h1>
           <h2 className='sub-title mb-4 text-light my-4'>
-            <span className='borderTitle border border-danger text-light p-1 m-1'>
-              Truong Nhac
-            </span>
-            <span>- Doremi Music Lessons</span>
+            <span className='truongTitle'>Truong Nhac</span> - Doremi Music
+            Lessons
           </h2>
           <p>
             {viet

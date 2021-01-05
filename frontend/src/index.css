@@ -67,6 +67,11 @@ body {
   line-height: 1em;
   text-transform: uppercase;
 }
+
+.truongTitle {
+  border: solid red;
+  padding: 1px 30px;
+}
 .intro p {
   font-size: 1.1em;
   color: #fff;
@@ -170,11 +175,12 @@ footer h6 {
     font-size: 3em;
   }
   .intro .sub-title {
-    font-size: 1.5em;
+    font-size: 1em;
   }
-  .borderTitle {
-    padding: 0%;
-    margin-bottom: 100px;
+  .truongTitle {
+    border: none;
+    padding: 0px;
+    color: red;
   }
 }
 @media only screen and (max-device-width: 480px) {
