@@ -37,7 +37,9 @@ export const addUser = asyncHandler(async (req, res) => {
   }
   if (!validator.isStrongPassword(password)) {
     res.status(403)
-    throw new Error('The password is not strong')
+    throw new Error(
+      'The password is not strong: min-length 8, 1 uppercase, 1 lowercase, 1 sysmbol, 1 number'
+    )
   }
   const user = await User.create({
     name,
