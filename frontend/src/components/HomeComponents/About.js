@@ -5,15 +5,15 @@ const About = ({ lan }) => {
   return (
     <div className='container pt-2 pb-5'>
       <div className='section-header pt-5 pb-5 text-center'>
-        <h3 className='section-title'>
+        {/* <h3 className='section-title'>
           <span>Our </span>Store
-        </h3>
-        <h6 className='section-subtitle mr-auto ml-auto'>
+        </h3> */}
+        {/* <h6 className='section-subtitle mr-auto ml-auto'>
           {lan
             ? `Giảng dạy nhiều nhạc cụ của như Piano, Guitar, Trống, Violin,Viola, Cello và Bass.`
             : ` We offer music lessons for Piano, Guitar, Drums, Violin, Viola, Cello
           and Bass.`}
-        </h6>
+        </h6> */}
       </div>
       <div className='section-content'>
         <div className='row'>
