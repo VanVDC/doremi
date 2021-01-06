@@ -52,6 +52,14 @@ const Main = ({ lan }) => {
             </button>
           )}
         </div>
+        <div className='socialMain'>
+          <a href='https://www.facebook.com/doremimusiclesson/?ref=page_internal'>
+            <i className='fab fa-facebook-f fa-3x ' />
+          </a>
+          <a href='https://www.youtube.com/channel/UCqrVTX-uBHAf9WYyHpxs3JA'>
+            <i className='fab fa-youtube fa-3x ' />
+          </a>
+        </div>
       </div>
     </div>
   )

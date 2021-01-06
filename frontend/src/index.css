@@ -6,6 +6,9 @@ body {
   padding: 0.5rem 1rem;
 }
 
+.navbar img:hover {
+  transform: scale(1.2) translateY(13px);
+}
 /* Main */
 
 .main {
@@ -81,6 +84,26 @@ body {
 }
 .intro .btn:hover {
   letter-spacing: 6px;
+}
+
+.socialMain {
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialMain a {
+  display: inline-block;
+  margin-right: 20px;
+  filter: invert(1);
+  transform: scale(0.5);
+  transition: 0.5s;
+}
+.socialMain a:hover {
+  transform: scale(0.5) translateY(-15px);
 }
 
 /* About */
