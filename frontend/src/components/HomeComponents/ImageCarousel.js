@@ -7,11 +7,7 @@ const ImageCarousel = () => {
     <Carousel pause='hover' className='bg-dark text-center'>
       {imageData.map((image, i) => (
         <Carousel.Item key={i}>
-          <Image
-            className=' w-50'
-            src={`https://scontent.fatl1-2.fna.fbcdn.net/v/${image}`}
-            fluid
-          />
+          <Image className=' w-50' src={image} fluid />
         </Carousel.Item>
       ))}
     </Carousel>
