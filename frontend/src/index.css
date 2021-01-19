@@ -69,6 +69,7 @@ body {
   color: #fff;
   line-height: 1em;
   text-transform: uppercase;
+  margin: 60px 0;
 }
 
 .truongTitle {
@@ -78,7 +79,7 @@ body {
 .intro p {
   font-size: 1.1em;
   color: #fff;
-  margin: 20px 0;
+  margin: 30px 0;
   font-weight: 400;
   max-width: 700px;
 }
@@ -199,6 +200,7 @@ footer h6 {
   }
   .intro .sub-title {
     font-size: 1em;
+    margin: 20px 0;
   }
   .truongTitle {
     border: none;
