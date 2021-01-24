@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 // import bgImage from '../../assets/img/home_bg.jpg'
-import bgVideo from '../../assets/video/piano.mp4'
+import bgVideo from '../../assets/video/piano.mp4';
 
 const Main = ({ lan }) => {
-  const initialBool = JSON.parse(localStorage.getItem('lang')) || false
-  let [viet, setViet] = useState(initialBool)
+  const initialBool = JSON.parse(localStorage.getItem('lang')) || false;
+  let [viet, setViet] = useState(initialBool);
 
   useEffect(() => {
-    localStorage.setItem('lang', JSON.stringify(viet))
-    lan(viet)
-  }, [viet, lan])
+    localStorage.setItem('lang', JSON.stringify(viet));
+    lan(viet);
+  }, [viet, lan]);
 
   const onToggle = () => {
-    setViet(!viet)
-  }
+    setViet(!viet);
+  };
 
   return (
     <div className='main'>
@@ -30,6 +30,7 @@ const Main = ({ lan }) => {
             <span className='truongTitle'>Truong Nhac</span> - Doremi Music
             Lessons
           </h2>
+
           <p>
             {viet
               ? `Giảng dạy nhiều nhạc cụ của như Piano, Guitar, Trống, Violin,Viola, Cello và Bass.`
@@ -62,7 +63,7 @@ const Main = ({ lan }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;
